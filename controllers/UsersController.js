@@ -152,7 +152,7 @@ export default class UsersController {
 
       const userExists = await User.findOne({ email });
 
-      if (email === userExists.email) {
+      if (userExists) {
         res.status(422).json({
           message: 'Email já cadastrado.',
         });
