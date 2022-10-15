@@ -132,7 +132,7 @@ export default class NewsController {
       if (news.length === 0) {
         res
           .status(404)
-          .json({ message: `Nenhuma notícia encontrada com: ${id}.` });
+          .json({ message: `Nenhuma notícia encontrada com: ${id}` });
         return;
       }
 
@@ -161,7 +161,7 @@ export default class NewsController {
       if (news.length === 0) {
         res
           .status(404)
-          .json({ message: `Nenhuma notícia encontrada com: ${q}.` });
+          .json({ message: `Nenhuma notícia encontrada com: ${q}` });
         return;
       }
 

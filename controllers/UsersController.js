@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import User from '../models/User';
+import News from '../models/News';
 import EmailRegex from '../helpers/EmailRegex';
 import CreateUserToken from '../helpers/CreateUserToken';
 import GetToken from '../helpers/GetToken';
@@ -152,7 +153,7 @@ export default class UsersController {
 
       const userExists = await User.findOne({ email });
 
-      if (userExists) {
+      if (email && email !== user.email && userExists) {
         res.status(422).json({
           message: 'Email já cadastrado.',
         });
@@ -217,7 +218,8 @@ export default class UsersController {
       const user = await GetUserByToken.handleGetUserByToken(token, req, res);
 
       await User.findByIdAndDelete(mongoose.Types.ObjectId(user._id));
-      res.status(200).json({ message: 'Usuário deletado com sucesso.' });
+      await News.deleteMany({ userId: user._id });
+      res.status(200).json({ message: 'Usuário deletado :(' });
     } catch (err) {
       res.status(422).json({
         message: 'Houve um erro, por favor tente novamente mais tarde.',
