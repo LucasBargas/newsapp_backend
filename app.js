@@ -23,7 +23,7 @@ class App {
   routes() {
     this.app.use(routes);
     this.app.get('/', (req, res) => {
-      res.send('News API');
+      res.send('NewsLBS API');
     });
   }
 }
