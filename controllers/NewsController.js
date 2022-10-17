@@ -126,6 +126,7 @@ export default class NewsController {
           { title: { $regex: id, $options: 'si' } },
           { body: { $regex: id, $options: 'si' } },
           { category: { $regex: id, $options: 'si' } },
+          { author: { $regex: id, $options: 'si' } },
         ],
       }).sort('-createdAt');
 
