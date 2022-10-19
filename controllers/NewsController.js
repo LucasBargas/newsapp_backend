@@ -122,7 +122,7 @@ export default class NewsController {
     const { id } = req.params;
 
     try {
-      const news = SearchForNews.handleSearchByNews(id);
+      const news = await SearchForNews.handleSearchByNews(id);
 
       if (news.length === 0) {
         res
