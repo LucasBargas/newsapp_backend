@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import GetToken from '../helpers/GetToken';
 import GetUserByToken from '../helpers/GetUserByToken';
+import SearchForNews from '../helpers/SearchForNews';
 import News from '../models/News';
 
 export default class NewsController {
@@ -66,7 +67,7 @@ export default class NewsController {
       res.status(200).json(news);
       return;
     } catch (error) {
-      res.status(404).json({ message: 'Houveu um erro.' });
+      res.status(404).json({ message: 'Houve um erro.' });
       return;
     }
   }
@@ -121,14 +122,7 @@ export default class NewsController {
     const { id } = req.params;
 
     try {
-      const news = await News.find({
-        $or: [
-          { title: { $regex: id, $options: 'si' } },
-          { body: { $regex: id, $options: 'si' } },
-          { category: { $regex: id, $options: 'si' } },
-          { author: { $regex: id, $options: 'si' } },
-        ],
-      }).sort('-createdAt');
+      const news = SearchForNews.handleSearchByNews(id);
 
       if (news.length === 0) {
         res
@@ -151,14 +145,7 @@ export default class NewsController {
     const { q } = req.query;
 
     try {
-      const news = await News.find({
-        $or: [
-          { title: { $regex: q, $options: 'si' } },
-          { body: { $regex: q, $options: 'si' } },
-          { category: { $regex: q, $options: 'si' } },
-          { author: { $regex: q, $options: 'si' } },
-        ],
-      }).sort('-createdAt');
+      const news = SearchForNews.handleSearchByNews(q);
 
       if (news.length === 0) {
         res
