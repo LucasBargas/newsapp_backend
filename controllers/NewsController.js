@@ -145,7 +145,7 @@ export default class NewsController {
     const { q } = req.query;
 
     try {
-      const news = SearchForNews.handleSearchByNews(q);
+      const news = await SearchForNews.handleSearchByNews(q);
 
       if (news.length === 0) {
         res
