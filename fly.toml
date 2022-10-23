@@ -1,6 +1,6 @@
-# fly.toml file generated for lbs-newsapp on 2022-10-15T10:52:08-03:00
+# fly.toml file generated for news-lbs on 2022-10-23T16:00:26-03:00
 
-app = "lbs-newsapp"
+app = "news-lbs"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
