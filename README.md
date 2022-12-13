@@ -7,7 +7,7 @@ Este projeto tem como objetivo simular um portal de notícias, porém com um vis
 * Registo, login e logout de usuário;
 * Edição de usuário, somente autenticado;
 * Registro, edição e exclusão de Notícia, somente autenticado;
-* A edição ou exlusão só pode ser feita por quem postou a notícia.
+* A edição ou exclusão só pode ser feita por quem postou a notícia.
 
 ### Tecnologias utilizadas
 #### Backend
